@@ -7,19 +7,19 @@ const Header = () => {
   return (
     <div>
       <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
-        <Container>
+        <Container className="d-flex justify-content-evenly" >
           <Navbar.Brand>
             <Link
               className="text-decoration-none"
               to="/"
-              style={{ color: "white" }}
+              style={{ color: "inherit" }}
             >
               Shopping Cart
             </Link>
           </Navbar.Brand>
           <Navbar.Text>
             <FormControl
-              style={{ width: 500 }}
+              style={{ width: "40vw" }}
               type="search"
               placeholder="Search a product..."
               className="m-auto"
@@ -30,13 +30,11 @@ const Header = () => {
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
               <RiShoppingCartFill />
-              <Badge bg="secondary">9</Badge>
+              <Badge className="m-1" bg="primary">9</Badge>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            <Dropdown.Menu style={{right:0}}>
+              <Dropdown.Item href="#/action-1">cart is empty!</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           {/* </Nav> */}

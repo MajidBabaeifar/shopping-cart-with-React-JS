@@ -10,7 +10,7 @@ const Home = () => {
     image: faker.image.abstract(1234, 2345, true),
   }));
   return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex flex-wrap justify-content-evenly">
       {productData.map((product)=>(
       <ProductCard product={product} />
       ))}

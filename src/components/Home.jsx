@@ -2,6 +2,7 @@ import { faker } from "https://cdn.skypack.dev/@faker-js/faker";
 import ProductCard from "./ProductCard";
 
 const Home = () => {
+  faker.seed(20)
   const productData = [...Array(30)].map(() => ({
     id: faker.datatype.uuid(),
     price: faker.commerce.price(100, 200, 0, "$"),

@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 import { RiShoppingCartFill } from "react-icons/ri";
+import { MdDeleteForever } from "react-icons/md";
+import { Button } from "react-bootstrap";
 import {
   Container,
   Dropdown,
   FormControl,
   Navbar,
-  Nav,
   Badge,
 } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { Cart } from "./context";
 
 const Header = () => {
-  const { cart } = useContext(Cart);
+  const { cart, setCart } = useContext(Cart);
   return (
     <div>
       <Navbar
@@ -59,7 +60,26 @@ const Header = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu style={{ right: 0 }}>
-              <Dropdown.Item href="#/action-1">cart is empty!</Dropdown.Item>
+              {cart.length === 0 ? (
+                <Dropdown.Item>cart is empty!</Dropdown.Item>
+              ) : (
+                cart.map((item) => (
+                  <Dropdown.Item key={item.id}>
+                    <div>
+                      <div>{item.name}</div>
+                      <Button
+                        onClick={(e) =>
+                          setCart(cart.filter(e.target.id !== item.id))
+                        }
+                        variant="dark"
+                        style={{ borderRadius: "50%" }}
+                      >
+                        <MdDeleteForever style={{ fontSize: "1.2rem" }} />
+                      </Button>
+                    </div>
+                  </Dropdown.Item>
+                ))
+              )}
             </Dropdown.Menu>
           </Dropdown>
           {/* </Nav> */}

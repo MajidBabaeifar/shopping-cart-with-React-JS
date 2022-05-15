@@ -1,6 +1,9 @@
 import { Card, Button } from "react-bootstrap";
+import { useContext } from 'react';
+import {Cart} from './context';
 
 const ProductCard = ({ product }) => {
+  const {cart, setCart} = useContext(Cart)
   return (
     <Card
       style={{ width: "18rem", padding: "10px", margin: "10px", height: "500px"}}
@@ -16,7 +19,7 @@ const ProductCard = ({ product }) => {
         <Card.Text className="text-muted  description-text" >{product.description}</Card.Text>
         <div className="addtocart-price-group">
           <span>{product.price}</span>
-          <Button variant="primary">add to cart</Button>
+          <Button variant="primary" onClick={()=>{setCart([...cart, product])}}>add to cart</Button>
         </div>
       </Card.Body>
     </Card>

@@ -38,8 +38,12 @@ const Header = () => {
             </Link>
           </Navbar.Brand>
 
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/cartpage">Link</NavLink>
+          <NavLink className="route--navbar" to="/">
+            Home
+          </NavLink>
+          <NavLink className="route--navbar" to="/cartpage">
+            Link
+          </NavLink>
 
           <Navbar.Text>
             <FormControl
@@ -59,23 +63,23 @@ const Header = () => {
               </Badge>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ right: 0 }}>
+            <Dropdown.Menu className="dropdown-menu">
               {cart.length === 0 ? (
                 <Dropdown.Item>cart is empty!</Dropdown.Item>
               ) : (
                 cart.map((item) => (
                   <Dropdown.Item key={item.id}>
-                    <div>
-                      <div>{item.name}</div>
-                      <Button
+                    <div className="drop--list">
+                      <img className="drop--list--image" src={item.image} />
+                      <span>{item.name}</span>
+                      <span>{item.price}</span>
+                      <MdDeleteForever
                         onClick={(e) =>
                           setCart(cart.filter(e.target.id !== item.id))
                         }
                         variant="dark"
-                        style={{ borderRadius: "50%" }}
-                      >
-                        <MdDeleteForever style={{ fontSize: "1.2rem" }} />
-                      </Button>
+                        style={{ borderRadius: "50%", fontSize: "1.2rem" }}
+                      />
                     </div>
                   </Dropdown.Item>
                 ))
